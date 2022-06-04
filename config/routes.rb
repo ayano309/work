@@ -31,10 +31,9 @@ Rails.application.routes.draw do
      delete "dashboard/logout", :to => "admins/sessions#destroy"
    end
 
-
 namespace :dashboard do
-  resources :categories, except: [:show,:new]
-   end
-
+ resources :categories, except: [:show,:new]
+ resources :products, except: [:show]
+end
 
 end
