@@ -36,7 +36,7 @@ namespace :dashboard do
  resources :products, except: [:show]
 end
 
-namespace :dashboard do
+namespace :user do
   resources :products, only: [:index, :show]
 end
 
