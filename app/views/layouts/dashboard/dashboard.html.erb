@@ -12,8 +12,16 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
-  </body>
+    <%= render 'layouts/dashboard/header' %>
+  <div class="row">
+    <div class="col-md-4 mt-3">
+      <%= render partial: 'layouts/dashboard/sidebar' %>
+    </div>
+    <div class="col">
+      <main class="py-4 mb-5">
+        <%= yield %>
+      </main>
+    </div>
+  </div>
+</body>
 </html>
