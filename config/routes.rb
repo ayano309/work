@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
 
 namespace :dashboard do
-  resources :categories, except: [:new]
+  resources :categories, except: [:show,:new]
    end
 
 
