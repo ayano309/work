@@ -4,7 +4,7 @@ class Dashboard::ProductsController < ApplicationController
   layout 'dashboard/dashboard'
 
   def index
-    @product = Product.all
+    @products = Product.all
   end
 
   def new
