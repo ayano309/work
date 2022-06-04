@@ -19,4 +19,5 @@ Rails.application.routes.draw do
     delete 'logout', :to => 'users/sessions#destroy'
   end
 
+   get "dashboard", :to => "dashboard#index"
 end
