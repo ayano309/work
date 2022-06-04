@@ -4,25 +4,26 @@
   <ul>
   <li>
     <%= link_to dashboard_path, class: "nav-link" do %>
-      <i class="nav-icon fas fa-home"></i>
       <p>Home</p>
     <% end %>
   </li>  
   <li>
     <%= link_to root_path, class: "nav-link" do %>
-      <i class="nav-icon far fa-user"></i>
       <p>顧客一覧</p>
     <% end %>
   </li>  
   <li>
+    <%= link_to dashboard_categories_path, class: "nav-link rails-link" do %>
+      <p>カテゴリー作成</p>
+    <% end %>
+  </li> 
+  <li>
     <%= link_to root_path, class: "nav-link rails-link" do %>
-      <i class="nav-icon fas fa-utensils"></i>
       <p>商品</p>
     <% end %>
   </li>  
   <li>
     <%= link_to root_path, class: "nav-link" do %>
-      <i class="nav-icon far fa-calendar-check"></i>
       <p>購入一覧</p>
     <% end %>
   </li>
@@ -48,6 +49,4 @@
 
   </script>
 
-  <%= link_to root_path, class: "btn btn-new" do %>
-    <p>予約サイトへ</p>
-  <% end %>
+  
