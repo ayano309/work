@@ -40,6 +40,7 @@ namespace :user do
   resources :cart_items, only: [:index, :create, :update, :destroy]
   delete '/cart_items', :to => 'cart_items#all_destroy',as: 'cart_items_all_delete'
   resources :addresses,except: [:show,:new]
+  resources :orders,except: [:show,:new]
 end
 
 
