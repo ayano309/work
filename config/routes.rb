@@ -38,6 +38,7 @@ end
 namespace :user do
   resources :products, only: [:index, :show]
   resources :cart_items, only: [:index, :create, :update, :destroy]
+  
 end
 
 

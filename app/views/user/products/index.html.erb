@@ -1,19 +1,22 @@
 <div class="container">
   <table>
     <thead>
-      <td>name</td>
-      <td>商品説明</td>
-      <td>価格</td>
-      <td></td>
+      <tr>
+        <td>name</td>
+        <td>商品説明</td>
+        <td>価格</td>
+        <td></td>
+      </tr>
     </thead>
     <tbody>
-      <% @products.each do |product| %>
-      <th><%= product.name %></th>
-      <th><%= product.description %></th>
-      <th><%= product.price %></th>
-      <th> <%= link_to "Show", user_product_path(product) %></th><br>
-      <hr>
-      <% end %>
+      <tr>
+        <% @products.each do |product| %>
+        <th><%= product.name %></th>
+        <th><%= product.description %></th>
+        <th><%= product.price %></th>
+        <th> <%= link_to "Show", user_product_path(product) %></th>
+        <% end %>
+      </tr>
     </tbody>
   </table>
 </div>
