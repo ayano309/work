@@ -28,7 +28,7 @@
                   <%= cart_item.product.name %>
                 <% end %>
               </td>
-              <td class="col-xs-2" align="right">税込　円</td><%# 単価(税込) %>
+              <td class="col-xs-2" align="right">税込<%= cart_item.product.with_tax_price%>円</td><%# 単価(税込) %>
               <td class="col-xs-2" align="center">
                 <%= form_with  model: cart_item ,url: user_cart_item_path(cart_item), method: :patch  do |f| %>
                   <%= f.select :amount,[1,2,3,4,5,6,7,8,9,10], {include_blank: "個数を選択して下さい"}, {class: "text", required: true} %>個
@@ -36,7 +36,7 @@
                 <% end %>
               </td>
               <td class="col-xs-2" align="right">
-                小計円<%# 小計 %>
+                小計<%= cart_item.subtotal%>円<%# 小計 %>
               </td>
               <td class="col-xs-1"><%= link_to "削除する", user_cart_item_path(cart_item.id), method: :delete, class:"btn btn-danger" %></td>
           　</tr>
@@ -51,13 +51,13 @@
           <tbody>
             <tr>
               <th class="active">合計金額</th>
-              <td align="right">合計  円</td>
+              <td align="right"><%= current_user.cart_items_total.to_s(:delimited) +  "円" %></td>
             </tr>
           </tbody>
         </table>
       </div>
     <div class="text-center">
-     
+
     </div>
   </div>
 </div>
