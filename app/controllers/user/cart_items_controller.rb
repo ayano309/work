@@ -19,7 +19,6 @@ class User::CartItemsController < ApplicationController
 
  def update
   @cart_item = current_user.cart_items.find(params[:id])
-
   if @cart_item.update(amount:params[:cart_item][:amount].to_i)
    redirect_to user_cart_items_path, success: '変更が完了しました'
   else
@@ -36,8 +35,18 @@ class User::CartItemsController < ApplicationController
     redirect_to user_cart_items_path
   else
     @cart_items = current_user.cart_items
-
     render :index
+  end
+ end
+
+ def all_destroy
+  @cart_items = current_user.cart_items
+  if @cart_items.destroy_all
+   flash[:notice] = "カートを空にしました。"
+   redirect_to  user_cart_items_path
+  else
+   @cart_items = current_user.cart_items
+   render :index
   end
 
  end
