@@ -1,4 +1,4 @@
-  
+
 <div class="container">
   <table>
     <thead>
@@ -15,4 +15,15 @@
     </tbody>
   </table>
 </div>
+<% if user_signed_in? %>
+  <%= form_with url: user_cart_items_path, local: true do |f| %>
+    <%= f.hidden_field :product_id, value: @product.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <p>数量を選択してください</p>
+    <%= f.select :amount,[1,2,3,4,5,6,7,8,9,10], {include_blank: "個数を選択して下さい"}, {class: "text", required: true} %>
+    <%= f.submit "カートに入れる", class: "btn btn-primary w-100 mb-2" do %>
+       <i class="fas fa-shopping-cart"></i>
+    <% end %>
+  <% end %>
+<% end %>
 <%= link_to "Back", user_products_path %>
