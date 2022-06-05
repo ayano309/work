@@ -1,0 +1,18 @@
+  
+<div class="container">
+  <table>
+    <thead>
+      <td>name</td>
+      <td>商品説明</td>
+      <td>価格</td>
+      <td></td>
+    </thead>
+    <tbody>
+      <th><%= @product.name %></th>
+      <th><%= @product.description %></th>
+      <th><%= @product.price %></th>
+      <hr>
+    </tbody>
+  </table>
+</div>
+<%= link_to "Back", user_products_path %>

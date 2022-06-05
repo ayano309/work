@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
-  
+  root to: 'user/products#index'
   # user関連
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
@@ -14,7 +14,6 @@ Rails.application.routes.draw do
 
   # userのサインアップなど
   devise_scope :user do
-    root to: 'users/sessions#new'
     get 'signup', :to => 'users/registrations#new'
     get 'login', :to => 'users/sessions#new'
     delete 'logout', :to => 'users/sessions#destroy'
@@ -35,5 +34,10 @@ namespace :dashboard do
  resources :categories, except: [:show,:new]
  resources :products, except: [:show]
 end
+
+namespace :user do
+  resources :products, only: [:index, :show]
+end
+
 
 end
