@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
       <div class="btn-box text-right">
-      　 "カートを空にする"
+      　<%= link_to 'カートを空にする',user_cart_items_all_delete_path, method: :delete,class:"btn btn-danger" %>
       </div>
     </div>
   </div>
@@ -30,8 +30,10 @@
               </td>
               <td class="col-xs-2" align="right">税込　円</td><%# 単価(税込) %>
               <td class="col-xs-2" align="center">
-                
-                <%= cart_item.amount%>個
+                <%= form_with  model: cart_item ,url: user_cart_item_path(cart_item), method: :patch  do |f| %>
+                  <%= f.select :amount,[1,2,3,4,5,6,7,8,9,10], {include_blank: "個数を選択して下さい"}, {class: "text", required: true} %>個
+                  <%= f.submit "変更", class: "btn btn-success" %>
+                <% end %>
               </td>
               <td class="col-xs-2" align="right">
                 小計円<%# 小計 %>

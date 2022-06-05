@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  
+
   root to: 'user/products#index'
   # user関連
   devise_for :users, :controllers => {
@@ -18,11 +18,11 @@ Rails.application.routes.draw do
     get 'login', :to => 'users/sessions#new'
     delete 'logout', :to => 'users/sessions#destroy'
   end
-  
+
   devise_for :admins, :controllers => {
      :sessions => 'admins/sessions'
    }
- 
+
    devise_scope :admin do
      get "dashboard", :to => "dashboard#index"
      get "dashboard/login", :to => "admins/sessions#new"
@@ -38,7 +38,7 @@ end
 namespace :user do
   resources :products, only: [:index, :show]
   resources :cart_items, only: [:index, :create, :update, :destroy]
-  
+  delete '/cart_items', :to => 'cart_items#all_destroy',as: 'cart_items_all_delete'
 end
 
 
