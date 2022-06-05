@@ -42,6 +42,7 @@ class User::AddressesController < ApplicationController
   private
 
   def address_params
+    #user_idはいらない気がする
     params.require(:address).permit(:user_id,:zip_code, :address, :name)
   end
 
