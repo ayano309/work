@@ -3,7 +3,7 @@ class Dashboard::OrdersController < ApplicationController
   layout 'dashboard/dashboard'
   
   def index
-    @order = Order.all
+    @orders = Order.all
   end
   
   def show
