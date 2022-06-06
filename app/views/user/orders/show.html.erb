@@ -1,0 +1,75 @@
+<div class="container">
+  <h2 class="col-xs-8 col-xs-offset-2" style="margin-bottom: 30px;" >注文履歴詳細</h2>
+  <div class="row">
+    <div class="col-xs-6">
+      <h4><strong>注文情報</strong></h4>
+      <table class="table table-bordered">
+        <tr>
+          <td class="active col-xs-3">注文日</td>
+          <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+        </tr>
+        <tr>
+          <td class="active">配送先</td>
+          <td>
+            <%= @order.zip_code %><br>
+            <%= @order.address %><br>
+            <%= @order.name %>
+          </td>
+        </tr>
+        <tr>
+          <td class="active">支払方法</td>
+          <td><%= @order.pay_method %></td>
+        </tr>
+        <tr>
+          <td class="active">ステータス</td>
+          <td style="color: red;">
+            <%= @order.order_status %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-xs-3">
+      <h4><strong>請求情報</strong></h4>
+      <table class="table table-bordered">
+        <tr>
+          <td class="active col-xs-5">商品合計</td>
+          <td><%= @order.total_price.to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <td class="active">配送料</td>
+          <td><%= @order.postage.to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <th class="active">ご請求額</th>
+          <td> <%= billing_amount(@order).to_s(:delimited) %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-8">
+      <h4><strong>注文内容</strong></h4>
+      <table class="table table-bordered">
+        <thead>
+          <tr class="active">
+            <td>商品</td>
+            <td>単価（税込）</td>
+            <td>個数</td>
+            <td>小計</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order_details.each do |order_detail| %>
+            <tr>
+              <td class="col-xs-8"><%= order_detail.product.name %></td>
+              <td class="col-xs-2"><%= order_detail.product.with_tax_price.to_s(:delimited) %></td>
+              <td><%= order_detail.amount %></td>
+              <td><%= order_detail.tax_included_price.to_s(:delimited) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<%= link_to "注文履歴一覧へ戻る", user_orders_path, class: "btn btn-info" %>

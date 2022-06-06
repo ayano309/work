@@ -13,12 +13,6 @@ class User < ApplicationRecord
   has_many :cart_items, dependent: :destroy
  has_many :addresses, dependent: :destroy
  
- ##合計金額
-  def cart_items_total
-    total = 0
-    cart_items.each do |cart_item|
-      total += cart_item.subtotal
-    end
-    total
-  end
+ 
+  
 end
