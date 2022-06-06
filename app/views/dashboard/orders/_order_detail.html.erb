@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-xs-8">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>制作ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_details.each do |order_detail|%>
+            <tr>
+              <td><p><%= order_detail.product.name%></p></td>
+              <td><p><%= order_detail.product.with_tax_price.to_s(:delimited) %></p></td>
+              <td><p><%= order_detail.amount%></p></td>
+              <td><p><%=order_detail.tax_included_price.to_s(:delimited) %></p></td>
+              <td>
+                <%= form_with(model: order_detail, url: dashboard_order_detail_path(order_detail.id),method: :patch, local: true) do |f|%>
+                <%= f.select :production_status, OrderDetail.production_statuses.keys,{}, {class: "form-control", required: true} %>
+                <%= f.submit "更新", class:"btn btn-success"%>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+      <div class="col-xs-3 off-set-1">
+      <table class="table">
+          <tr>
+            <th>送料</th>
+            <td class="text-right col-xs-5">¥<%= @order.postage %></td>
+          </tr>
+          <tr>
+            <th>商品合計</th>
+            <td class="text-right col-xs-5">¥<%= total_pay(@order.order_details).to_s(:delimited) %></td>
+          </tr>
+          <tr>
+            <th>請求金額</th>
+            <td class="text-right col-xs-5">¥ <%= @order.total_price.to_s(:delimited) %></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td class="text-right col-xs-5"><%= link_to "注文履歴へ戻る", dashboard_orders_path, class:"btn btn-outline-secondary"%></td>
+          </tr>
+      </table>
+      </div>
+    </div>
+  </div>

@@ -5,6 +5,6 @@ module ApplicationHelper
 
 
   def billing_amount(order)
-    total_price(current_cart) + order.postage
+    total_pay(current_cart) + order.postage
   end
 end

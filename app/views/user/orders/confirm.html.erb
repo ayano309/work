@@ -41,7 +41,7 @@
           </tr>
           <tr>
             <th class="info">商品合計</th>
-            <td class="text-right">¥<%= total_price(@cart_items).to_s(:delimited) %></td>
+            <td class="text-right">¥<%= total_pay(@cart_items).to_s(:delimited) %></td>
           </tr>
           <tr>
             請求額  <%= billing_amount(@order).to_s(:delimited) %>

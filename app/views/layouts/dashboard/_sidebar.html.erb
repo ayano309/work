@@ -21,9 +21,15 @@
         <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to root_path, class: "nav-link" do %>
+        <%= link_to dashboard_categories_path, class: "nav-link rails-link" do %>
+          <i class="nav-icon fas fa-utensils"></i>
+          <p>カテゴリー登録</p>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to dashboard_orders_path, class: "nav-link" do %>
           <i class="nav-icon far fa-calendar-check"></i>
-          <p>購入一覧</p>
+          <p>注文履歴一覧</p>
         <% end %>
       </li>
      
