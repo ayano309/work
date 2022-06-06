@@ -22,18 +22,8 @@
         </tr>
         <tr>
           <td class="active">ステータス</td>
-          <td>
-            <% case @order.order_status when 0 %>
-              <span class="badge" style="background: red;">入金待ち</span>
-            <% when 1 %>
-              <span class="badge" style="background: orange;">入金確認</span>
-            <% when 2 %>
-              <span class="badge" style="background: green;">製作中</span>
-            <% when 3 %>
-              <span class="badge" style="background: blue;">発送準備中</span>
-            <% when 4 %>
-              <span class="badge" style="background: gray;">発送済み</span>
-            <% end %>
+          <td style="color: red;">
+            <%= @order.order_status %>
           </td>
         </tr>
       </table>
