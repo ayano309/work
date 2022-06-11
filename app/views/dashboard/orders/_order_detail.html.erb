@@ -31,15 +31,15 @@
       <table class="table">
           <tr>
             <th>送料</th>
-            <td class="text-right col-xs-5">¥<%= @order.postage %></td>
+            <td class="text-right col-xs-5"><%= @order.postage %>円</td>
           </tr>
           <tr>
             <th>商品合計</th>
-            <td class="text-right col-xs-5">¥<%= total_pay(@order.order_details).to_s(:delimited) %></td>
+            <td class="text-right col-xs-5"><%= total_pay(@order.order_details).to_s(:delimited) %>円</td>
           </tr>
           <tr>
             <th>請求金額</th>
-            <td class="text-right col-xs-5">¥ <%= @order.total_price.to_s(:delimited) %></td>
+            <td class="text-right col-xs-5"><%= @order.total_price.to_s(:delimited) %>円</td>
           </tr>
           <tr>
             <th></th>

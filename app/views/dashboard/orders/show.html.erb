@@ -10,11 +10,14 @@
             </tr>
             <tr>
               <th>注文日</th>
-              <td><%= @order.created_at.strftime("%Y-%m-%d %H:%M:%S")%></td>
+              <td><%= @order.created_at.strftime("%Y/%m/%d %H:%M:%S")%></td>
             </tr>
             <tr>
               <th>配送先</th>
-              <td>〒<%= @order.zip_code + @order.address%></td>
+              <td>
+                〒<%= @order.zip_code %><br>
+                <%= @order.address%>
+              </td>
             </tr>
             <tr>
               <th>支払方法</th>
@@ -33,6 +36,6 @@
      </table>
     </div>
   </div>
-  
+
 </div>
 <%= render 'order_detail'%>
