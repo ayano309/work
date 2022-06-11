@@ -11,7 +11,7 @@ class User::OrdersController < ApplicationController
   end
 
   def new
-    @order = current_user.orders.new
+    @order = Order.new
     @addresses = current_user.addresses
   end
 
@@ -24,22 +24,27 @@ class User::OrdersController < ApplicationController
     # カートアイテムの情報
     @cart_items = current_user.cart_items
 
-    if params[:order][:user_address] = 1
+    if params[:user_address] == "0"
       @order.zip_code = current_user.zip_code
       @order.address = current_user.address
       @order.name = current_user.last_name + current_user.first_name
-    elsif params[:order][:user_address] = 2
+    elsif params[:user_address] == "1"
       @address = current_user.addresses.find(params[:Address][:select_id])
       @order.zip_code = @address.zip_code
       @order.address = @address.address
       @order.name = @address.name
-    elsif
+    elsif params[:user_address] == "2"
       current_user.addresses.create!(
-        zip_code: @order.zip_code,
-        address: @order.address,
-        name: @order.name
+        zip_code: params[:order][:zip_code],
+        address: params[:order][:address],
+        name: params[:order][:name]
         )
+      @order.zip_code =  params[:order][:zip_code]
+      @order.address = params[:order][:address]
+      @order.name =  params[:order][:name]
+        
     end
+     
   end
 
 
