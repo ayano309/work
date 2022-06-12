@@ -4,6 +4,7 @@
 #
 #  id                     :integer          not null, primary key
 #  address                :string           not null
+#  deleted_flg            :boolean          default(FALSE), not null
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  first_name             :string           not null
@@ -36,8 +37,10 @@ class User < ApplicationRecord
   
   has_many :orders, dependent: :destroy
   has_many :cart_items, dependent: :destroy
- has_many :addresses, dependent: :destroy
+  has_many :addresses, dependent: :destroy
  
- 
+  def switch_flg(column_of_obj)
+    column_of_obj ? false : true
+  end
   
 end
