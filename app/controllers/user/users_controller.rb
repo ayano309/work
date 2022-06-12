@@ -19,10 +19,14 @@ class User::UsersController < ApplicationController
     end
   end
   
-  def destroy
-    # ユーザーが退会処理をするとき
+  def confirm
+  end
+  
+  def withdrawal
+   # ユーザーが退会処理をするとき
     @user.deleted_flg = User.switch_flg(@user.deleted_flg)
     @user.update(deleted_flg: @user.deleted_flg)
+    flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
   end
   
