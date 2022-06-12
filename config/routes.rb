@@ -35,7 +35,7 @@ namespace :dashboard do
  resources :products, except: [:show]
  resources :orders, only: [:index,:show, :update]
  resources :order_details, only: [:update]
- resources :users, only: [:index,:show,:destroy]
+ resources :users, only: [:index,:show,:edit,:update,:destroy]
 end
 
 namespace :user do
