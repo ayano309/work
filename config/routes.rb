@@ -40,6 +40,7 @@ namespace :dashboard do
 end
 
 namespace :user do
+  resources :users, except: [:index, :new, :create]
   resources :products, only: [:index, :show]
   resources :cart_items, only: [:index, :create, :update, :destroy]
   delete '/cart_items', :to => 'cart_items#all_destroy',as: 'cart_items_all_delete'
