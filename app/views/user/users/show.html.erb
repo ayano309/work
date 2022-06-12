@@ -1,0 +1,45 @@
+<div class="container mt-3">
+  <div class="w-90">
+    <div class="mypage">
+      <h2>マイページ</h2>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-between">
+      <div class="row">
+        <div class="col d-flex align-items-center ml-2 mt-3">
+          <div class="d-flex flex-column">
+            <label for="user-name">登録情報</label>
+            <%= link_to "編集する",edit_user_user_path(current_user.id),class: "btn btn-success"%>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <hr>
+    <div class="d-flex justify-content-between">
+      <div class="row">
+        <div class="col d-flex align-items-center ml-2 mt-3">
+          <div class="d-flex flex-column">
+            <label for="user-name">配送先</label>
+            <%= link_to "一覧を見る",user_addresses_path,class: "btn btn-primary"%>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    <hr>
+    
+    <div class="d-flex justify-content-between">
+      <div class="row">
+        
+        <div class="col d-flex align-items-center ml-2 mt-3">
+          <div class="d-flex flex-column">
+            <label for="user-name">注文履歴</label>
+            <%= link_to "一覧を見る",user_orders_path,class: "btn btn-primary"%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+</div>

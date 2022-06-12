@@ -35,9 +35,16 @@ namespace :dashboard do
  resources :products, except: [:show]
  resources :orders, only: [:index,:show, :update]
  resources :order_details, only: [:update]
+ resources :users, only: [:index,:show,:edit,:update,:destroy]
+ get 'user/:id/order', :to => 'users#order', :as => 'order_user'
 end
 
 namespace :user do
+  resources :users, except: [:index, :new, :create, :destroy]
+  # 退会確認画面
+  get '/users/:id/confirm' => 'users#confirm', as: 'confirm'
+  # 論理削除用のルーティング
+  patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
   resources :products, only: [:index, :show]
   resources :cart_items, only: [:index, :create, :update, :destroy]
   delete '/cart_items', :to => 'cart_items#all_destroy',as: 'cart_items_all_delete'
