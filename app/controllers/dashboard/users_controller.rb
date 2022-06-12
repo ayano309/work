@@ -10,6 +10,11 @@ class Dashboard::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
+  def order
+     @user = User.find(params[:id])
+     @orders = @user.orders
+  end
+  
   
   def edit
      @user = User.find(params[:id])

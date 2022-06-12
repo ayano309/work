@@ -36,6 +36,7 @@ namespace :dashboard do
  resources :orders, only: [:index,:show, :update]
  resources :order_details, only: [:update]
  resources :users, only: [:index,:show,:edit,:update,:destroy]
+ get 'user/:id/order', :to => 'users#order', :as => 'order_user'
 end
 
 namespace :user do
